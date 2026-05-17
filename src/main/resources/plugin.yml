@@ -1,0 +1,4 @@
+name: TinySettings
+version: '1.0-SNAPSHOT'
+main: me.pondhalf.project.tinySettings.TinySettings
+api-version: '1.21'

@@ -1,0 +1,50 @@
+title: "&#55FFAATinySettings &7- &fMain"
+max-slot: 27
+items:
+  10:
+    material: BOOK
+    displayname: "&aHello %player%"
+    lore:
+      - "&7An example icon item."
+      - "&7Click to open page 'extras'."
+    on-click:
+      goto-page: extras
+      execute-command-as-player: []
+      execute-command-as-console: []
+  13:
+    material: LIME_DYE
+    displayname: "&aFly Toggle"
+    lore:
+      - "&7Click to toggle flight."
+    is-toggle-item:
+      enable: true
+      default-setting: disable
+      change-item:
+        enable:
+          material: LIME_DYE
+          displayname: "&aFly: &lON"
+          lore:
+            - "&7Currently &aenabled&7."
+            - "&7Click to disable."
+          on-click:
+            execute-command-as-player: []
+            execute-command-as-console:
+              - "minecraft:gamemode creative %player%"
+        disable:
+          material: GRAY_DYE
+          displayname: "&cFly: &lOFF"
+          lore:
+            - "&7Currently &cdisabled&7."
+            - "&7Click to enable."
+          on-click:
+            execute-command-as-player: []
+            execute-command-as-console:
+              - "minecraft:gamemode survival %player%"
+  16:
+    material: BARRIER
+    displayname: "&cClose"
+    lore:
+      - "&7Closes the menu."
+    on-click:
+      execute-command-as-player:
+        - "tinysettings"

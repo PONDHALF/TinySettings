@@ -4,6 +4,7 @@ import me.pondhalf.project.tinySettings.config.ClickActions;
 import me.pondhalf.project.tinySettings.config.ItemAppearance;
 import me.pondhalf.project.tinySettings.config.ItemConfig;
 import me.pondhalf.project.tinySettings.config.PageConfig;
+import me.pondhalf.project.tinySettings.state.RateLimitManager;
 import me.pondhalf.project.tinySettings.util.Placeholders;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -17,9 +18,11 @@ import org.bukkit.inventory.InventoryHolder;
 public final class GuiListener implements Listener {
 
     private final GuiManager guiManager;
+    private final RateLimitManager rateLimitManager;
 
-    public GuiListener(GuiManager guiManager) {
+    public GuiListener(GuiManager guiManager, RateLimitManager rateLimitManager) {
         this.guiManager = guiManager;
+        this.rateLimitManager = rateLimitManager;
     }
 
     @EventHandler
@@ -38,6 +41,8 @@ public final class GuiListener implements Listener {
 
         if (!(event.getWhoClicked() instanceof Player player)) return;
         if (event.getClickedInventory() != event.getView().getTopInventory()) return;
+
+        if (!rateLimitManager.tryClick(player)) return;
 
         PageConfig page = guiManager.registry().get(gui.pageId());
         if (page == null) {

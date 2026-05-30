@@ -6,9 +6,15 @@ softdepend: [PlaceholderAPI]
 commands:
   tinysettings:
     description: Open the settings GUI
-    usage: /tinysettings [reload]
+    usage: /tinysettings [reload|ratelimit]
 permissions:
   tinysettings.use:
     default: true
   tinysettings.reload:
     default: op
+  tinysettings.ratelimit:
+    default: op
+    description: Manage click rate limit for GUI toggles
+  tinysettings.open:
+    default: op
+    description: Open GUI for another player

@@ -5,6 +5,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public final class PageRegistry {
 
@@ -66,5 +67,9 @@ public final class PageRegistry {
 
     public boolean has(String id) {
         return pages.containsKey(id);
+    }
+
+    public Set<String> pageIds() {
+        return pages.keySet();
     }
 }
